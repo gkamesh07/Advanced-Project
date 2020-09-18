@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rock Paper Scissors Game</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+</head>
+<body>
+  <!--Score Card-->
+  <div class="container col-12">
+    <div class="row col-12 mx-auto">
+      <div class="d-flex flex-row mt-5 col-xl-6 col-lg-6 col-md-8 col-sm-10 col-12 mx-auto border p-3">
+        <div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 col-4">
+          <h2 class="font-weight-bold">ROCK<br>PAPER<br>SCISSORS</h2>
+        </div>
+        <div class="col-5 col-sm-5 col-md-5 col-lg-3 col-xl-3 card bg-light ml-auto">
+            <div class="card-body mx-auto">
+              <h6 class="text-dark">SCORE</h6>
+              <h1 class="text-dark ml-3" id="p1s">0</h1>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Step 1-->
+  <div class="container col-12 mt-5" id="player1">
+    <div class="row col-12">
+      <div class="d-flex flex-column mx-auto">
+        <div class="d-flex flex-row ml-xl-5 pl-xl-5 ml-5 col-12">
+          <div class="d-flex flex-column">
+          <a class="link" id= "p1"  onclick="go(1)"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/paper.png" alt="paper" class="mr-5" style="width: 70%;"></a>
+          </div>
+          <div class="d-flex flex-column">
+            
+            <a class="link" id= "p2" onclick="go(2)"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/scissors.png" alt="scissors" style="width: 80%;"></a>
+          </div> 
+        </div>
+        <div class="mx-auto col-7 col-xl-5 col-lg-5 col-md-6 col-sm-6 pl-5">
+          <a class="link ml-3 ml-sm-2 ml-md-0" id= "p3" onclick="go(3)"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/rock.png" alt="rock" style="width: 90%;"></a>
+        </div>
+        <button class="btn btn-outline-secondary ml-auto bg-info text-dark" type="button" data-toggle="modal" data-target="#myModal">RULES</button>
+      </div>
+    </div>
+  </div>
+  <div class="container col-12 mt-5" id="player2" style="display: none;">
+    <div class="row col-12">
+      <div class="d-flex flex-column mx-auto">
+        <div class="d-flex flex-row ml-xl-5 pl-xl-5 ml-5 col-12">
+          <div>
+            <h4 class="ml-4 mb-5 font-weight-bold text-light">You Picked</h4>
+            <a class="link" id= "pp" style="display: none;"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/paper.png" alt="paper" class="mr-5" style="width: 70%;"></a>
+            <a class="link" id= "sc" style="display: none;"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/scissors.png" alt="scissors" style="width: 80%;"></a>
+            <a class="link" id= "st" style="display: none;"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/rock.png" alt="rock" style="width: 90%;"></a>
+          </div>
+          <div class="col-4">
+            <h4 id="uw" style="display: none;" class="text-success">You Won!</h4>
+            <h4 id="cw" style="display: none;" class="text-danger">You Loose!</h4>
+            <h4 id="drw" style="display: none;" class="text-warning">Match Draw!</h4>
+          </div>
+          <div>
+            <h4 class="mb-5 font-weight-bold text-light">The House Picked</h4>
+            <a class="link-ran" id="hpp" style="display: none;"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/paper.png" alt="paper" class="mr-5" style="width: 70%;"></a>
+            <a class="link-ran" id="hsc" style="display: none;"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/scissors.png" alt="scissors" style="width: 80%;"></a>
+            <a class="link-ran" id="hst" style="display: none;"><img src="https://cdn.rawgit.com/aronnax77/whatsdev_tutorials/ef296e2b/images/rock.png" alt="rock" style="width: 80%;"></a>
+          </div>
+        </div>
+        <div id="playagain" class="mx-auto">
+          <button class="btn btn-info" onclick="pa()">Play Again</button>
+      </div>
+      <div class="mx-auto mt-5">
+        <button class="btn btn-outline-secondary ml-auto bg-info text-dark" type="button" data-toggle="modal" data-target="#myModal">RULES</button>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title ">RULES</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <img src="./images/desktop-rules-modal.jpg" alt="rule-img" style="width: 100%; height: 100%;">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    <script src="./js/app.js"></script>
+    <!-- Font awesome CSS -->
+    <script src="https://kit.fontawesome.com/dfcabd51d0.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
